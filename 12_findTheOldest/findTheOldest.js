@@ -18,24 +18,23 @@ const findTheOldest = function (arr) {
         const currentYear = new Date().getFullYear();
         if (accumulator.yearOfDeath === undefined) {
             if ((item.yearOfDeath - item.yearOfBirth) > (currentYear - accumulator.yearOfBirth)) {
-                accumulator.name = item.name;
-                accumulator.yearOfBirth = item.yearOfBirth;
-                accumulator.yearOfDeath = item.yearOfDeath;
+                return item;
+            } else {
+                return accumulator;
             }
         } else if (item.yearOfDeath === undefined) {
             if ((currentYear - item.yearOfBirth) > (accumulator.yearOfDeath - accumulator.yearOfBirth)) {
-                accumulator.name = item.name;
-                accumulator.yearOfBirth = item.yearOfBirth;
-                accumulator.yearOfDeath = undefined;
+                return item;
+            } else {
+                return accumulator;
             }
         } else {
             if ((item.yearOfDeath - item.yearOfBirth) > (accumulator.yearOfDeath - accumulator.yearOfBirth)) {
-                accumulator.name = item.name;
-                accumulator.yearOfBirth = item.yearOfBirth;
-                accumulator.yearOfDeath = item.yearOfDeath;
+                return item;
+            } else {
+                return accumulator;
             }
         }
-        return accumulator;
     });
 };
 
